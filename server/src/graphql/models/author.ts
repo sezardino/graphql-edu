@@ -5,7 +5,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
-import { books } from "../../mock";
+import { Book } from "../../models";
 import { BookType } from "./book";
 
 export const AuthorType = new GraphQLObjectType({
@@ -17,7 +17,7 @@ export const AuthorType = new GraphQLObjectType({
     books: {
       type: new GraphQLList(BookType),
       resolve(parent, args) {
-        return books.filter((book) => book.authorId === parent.id);
+        return Book.find({ authorId: parent.id });
       },
     },
   }),

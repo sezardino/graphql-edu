@@ -1,12 +1,14 @@
 import {
+  GraphQLID,
   GraphQLInt,
   GraphQLNonNull,
   GraphQLObjectType,
   GraphQLString,
 } from "graphql";
+import { Book } from "../models";
 import { Author } from "../models/author";
 
-import { AuthorType } from "./models";
+import { AuthorType, BookType } from "./models";
 
 export const Mutation = new GraphQLObjectType({
   name: "Mutation",
@@ -18,15 +20,25 @@ export const Mutation = new GraphQLObjectType({
         age: { type: new GraphQLNonNull(GraphQLInt) },
       },
       resolve(_, args) {
-        console.log(1);
         const newAuthor = new Author({ name: args.name, age: args.age });
-        console.log(newAuthor);
 
-        try {
-          return newAuthor.save();
-        } catch (error) {
-          console.log(error);
-        }
+        return newAuthor.save();
+      },
+    },
+    addBook: {
+      type: BookType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        authorId: { type: new GraphQLNonNull(GraphQLID) },
+      },
+      resolve(_, args) {
+        const newBook = new Book({
+          name: args.name,
+          genre: args.genre,
+          authorId: args.authorId,
+        });
+        return newBook.save();
       },
     },
   },

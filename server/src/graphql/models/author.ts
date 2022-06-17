@@ -1,6 +1,15 @@
-import { GraphQLObjectType } from "graphql";
+import {
+  GraphQLID,
+  GraphQLInt,
+  GraphQLObjectType,
+  GraphQLString,
+} from "graphql";
 
 export const AuthorType = new GraphQLObjectType({
   name: "Author",
-  fields: () => ({}),
+  fields: () => ({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    age: { type: GraphQLInt },
+  }),
 });

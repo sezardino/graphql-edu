@@ -1,4 +1,5 @@
 import {
+  GraphQLList,
   GraphQLNonNull,
   GraphQLObjectType,
   GraphQLSchema,
@@ -20,7 +21,7 @@ const RootQuery = new GraphQLObjectType({
       },
     },
     books: {
-      type: BookType,
+      type: new GraphQLList(BookType),
       resolve() {
         return books;
       },
@@ -38,7 +39,7 @@ const RootQuery = new GraphQLObjectType({
       },
     },
     authors: {
-      type: AuthorType,
+      type: new GraphQLList(AuthorType),
       resolve() {
         return authors;
       },

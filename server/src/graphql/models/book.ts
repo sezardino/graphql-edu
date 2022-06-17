@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLString } from "graphql";
 
-const BookType = new GraphQLObjectType({
+export const BookType = new GraphQLObjectType({
   name: "Book",
   fields: () => ({
     id: { type: GraphQLString },

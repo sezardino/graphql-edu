@@ -1,4 +1,4 @@
-import { ApolloError } from "apollo-server-express";
+import { ApolloError, AuthenticationError } from "apollo-server-express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
@@ -84,6 +84,12 @@ export const usersResolvers = {
     },
   },
   Query: {
-    users: async () => User.find(),
+    users: async (parent, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("Not authenticated");
+      }
+
+      return User.find();
+    },
   },
 };

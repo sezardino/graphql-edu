@@ -18,9 +18,9 @@ export const Home = () => {
   const [getHandler, { data }] = useLazyQuery<{ users: User[] }>(GET_USERS);
 
   useEffect(() => {
-    if (user) {
-      getHandler();
-    }
+    getHandler();
+    // if (user) {
+    // }
   }, []);
 
   return (

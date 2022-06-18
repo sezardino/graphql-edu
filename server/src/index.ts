@@ -19,6 +19,12 @@ const bootstrap = async () => {
   const server = new ApolloServer({
     resolvers,
     typeDefs,
+    csrfPrevention: true,
+    context: ({ req }) => {
+      return {
+        user: req.user,
+      };
+    },
   });
 
   await server.start();

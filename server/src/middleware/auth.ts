@@ -15,8 +15,6 @@ export const authMiddleware = (
 ) => {
   const { headers } = req;
 
-  console.log(headers.authorization);
-
   if (!headers.authorization) {
     return next();
   }

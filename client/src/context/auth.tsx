@@ -82,7 +82,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = (
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const login = (userData: AuthInput) => {
-    console.log(userData);
     localStorage.setItem("token", userData.token);
     dispatch({ type: ActionType.LOGIN, payload: userData });
   };

@@ -1,7 +1,17 @@
-import express from "express";
-import cors from "cors";
+import { ApolloServer } from "apollo-server";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const app = express();
-app.use(cors());
+import { resolvers, typeDefs } from "./graphql";
 
-app.listen(5000, () => console.log("server started on port 5000"));
+dotenv.config();
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+mongoose
+  .connect(process.env.MONGO_URL || "")
+  .then(() => server.listen())
+  .then((res) => {
+    console.log("MongoDB connected");
+    console.log("Server started on port ", res.url);
+  });

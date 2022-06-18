@@ -3,7 +3,10 @@ import { MessageInput } from "../types";
 
 export const messagesResolvers = {
   Mutation: {
-    async createMessage(_, { messageInput: { text, username } }: MessageInput) {
+    async createMessage(
+      _: any,
+      { messageInput: { text, username } }: MessageInput
+    ) {
       const newMessage = new Message({
         text: text,
         createdBy: username,
@@ -14,6 +17,6 @@ export const messagesResolvers = {
     },
   },
   Query: {
-    message: (_, { id }: { id: string }) => Message.findById(id),
+    message: (_: any, { id }: { id: string }) => Message.findById(id),
   },
 };

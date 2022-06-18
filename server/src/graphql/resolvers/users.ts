@@ -1,4 +1,4 @@
-import { ApolloError } from "apollo-server";
+import { ApolloError } from "apollo-server-express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
@@ -9,11 +9,24 @@ export const usersResolvers = {
   Mutation: {
     async register(_: any, args: RegisterInput) {
       const { registerInput } = args;
-      console.log(args);
+
+      if (!registerInput.username) {
+        throw new ApolloError("Name is required");
+      }
+
+      if (!registerInput.email) {
+        throw new ApolloError("Email is required");
+      }
+
+      if (!registerInput.password) {
+        throw new ApolloError("Password is required");
+      }
+
+      if (registerInput.password !== registerInput.confirmPassword) {
+        throw new ApolloError("Passwords do not match");
+      }
 
       const hasUser = await User.findOne({ username: registerInput.username });
-
-      console.log(hasUser);
 
       if (hasUser) {
         throw new ApolloError("User already exists", "USER_EXISTS");
@@ -35,6 +48,14 @@ export const usersResolvers = {
     },
     async login(_: any, args: LoginInput) {
       const { loginInput } = args;
+
+      if (!loginInput.email) {
+        throw new ApolloError("Email is required");
+      }
+
+      if (!loginInput.password) {
+        throw new ApolloError("Password is required");
+      }
 
       const user = await User.findOne({ email: loginInput.email });
 
@@ -62,5 +83,7 @@ export const usersResolvers = {
       return await user.save();
     },
   },
-  Query: {},
+  Query: {
+    users: async () => User.find(),
+  },
 };

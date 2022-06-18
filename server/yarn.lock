@@ -452,16 +452,6 @@
     "apollo-reporting-protobuf" "^3.3.1"
     "apollo-server-env" "^4.2.1"
 
-"apollo-server@^3.9.0":
-  "integrity" "sha512-g80gXDuK8fl2W0fQF/hEyeoO9AU+sO2gBzeJAYUyGLotYc+oL/Y3mTRk5GB8C7cXUXCg5uvWbUj8va0E5UZE7w=="
-  "resolved" "https://registry.npmjs.org/apollo-server/-/apollo-server-3.9.0.tgz"
-  "version" "3.9.0"
-  dependencies:
-    "@types/express" "4.17.13"
-    "apollo-server-core" "^3.9.0"
-    "apollo-server-express" "^3.9.0"
-    "express" "^4.17.1"
-
 "aproba@^1.0.3 || ^2.0.0":
   "integrity" "sha512-lYe4Gx7QT+MKGbDsA+Z+he/Wtef0BiwDOlK/XkBrdfsh9J/jPPXbX0tE9x9cl27Tmu5gg3QUbUrQYa/y+KOHPQ=="
   "resolved" "https://registry.npmjs.org/aproba/-/aproba-2.0.0.tgz"
@@ -2157,7 +2147,7 @@
   "version" "1.0.2"
 
 "utils-merge@1.0.1":
-  "integrity" "sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM="
+  "integrity" "sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA=="
   "resolved" "https://registry.npmjs.org/utils-merge/-/utils-merge-1.0.1.tgz"
   "version" "1.0.1"
 
@@ -2172,7 +2162,7 @@
   "version" "1.0.11"
 
 "vary@^1", "vary@~1.1.2":
-  "integrity" "sha1-IpnwLG3tMNSllhsLn3RSShj2NPw="
+  "integrity" "sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg=="
   "resolved" "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   "version" "1.1.2"
 

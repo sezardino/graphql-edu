@@ -9,6 +9,7 @@ export interface RegisterInput {
   registerInput: {
     username: string;
     password: string;
+    confirmPassword: string;
     email: string;
   };
 }
